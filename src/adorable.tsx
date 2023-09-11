@@ -19,9 +19,10 @@ export default function Command() {
 
 const getImageUrl = async (setImageUrl: (imageUrl: string) => void) => {
   try {
-    const response = await axios.get('https://api.adorableanimals.dev/randdom');
+    const response = await axios.get('https://api.adorableanimals.dev/random');
 
-    const imageLink = response.data.imageUrl;
+    const imageLink = encodeURI(response.data.imageUrl);
+    console.log(imageLink)
 
     setImageUrl(imageLink);
   } catch (error) {
